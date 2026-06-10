@@ -3,149 +3,298 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GrantForge — Pre-check Eligibilitate Fonduri România 2026</title>
+<title>GrantForge — Eligibilitate gratuită Startup Nation 2026–2029 | Fonduri România</title>
+<meta name="description" content="Verifică gratuit pentru ce fonduri europene și naționale te califici: Startup Nation, Diaspora Investește Acasă, AFIR, Digitalizare IMM. Pre-check eligibilitate + consultanță.">
+<meta property="og:title" content="GrantForge — Pentru ce fonduri te califici?">
+<meta property="og:description" content="Eligibilitate gratuită pentru Startup Nation 2026–2029 și alte programe de finanțare din România.">
+<meta property="og:type" content="website">
 <style>
   :root{
-    --bg:#0f1220; --card:#1a1f35; --card2:#222845; --txt:#e8ebf5; --muted:#9aa3c0;
-    --accent:#5b8cff; --good:#34d399; --maybe:#fbbf24; --bad:#6b7280; --line:#2c3354;
+    --bg:#0b0f1f; --bg2:#0f1530; --card:#161d3a; --card2:#1d2647; --txt:#eef1fb; --muted:#9aa6cc;
+    --accent:#5b8cff; --accent2:#7a5cff; --good:#34d399; --gold:#ffd166; --maybe:#fbbf24; --bad:#5b6480; --line:#2a3358;
+    --grad:linear-gradient(120deg,#5b8cff,#7a5cff 55%,#a855f7);
   }
   *{box-sizing:border-box}
-  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--txt);line-height:1.5}
-  .wrap{max-width:880px;margin:0 auto;padding:24px 18px 60px}
-  header h1{font-size:1.7rem;margin:0 0 4px}
-  header p{color:var(--muted);margin:0}
-  .badge{display:inline-block;background:var(--card2);color:var(--accent);font-size:.72rem;padding:3px 8px;border-radius:999px;margin-bottom:10px;letter-spacing:.5px}
-  .disclaimer{background:#2a1f12;border:1px solid #5a401c;color:#f3d8a8;font-size:.82rem;padding:10px 14px;border-radius:10px;margin:16px 0}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin:16px 0}
-  .q{margin:0 0 18px}
-  .q:last-child{margin-bottom:0}
-  label.lbl{display:block;font-weight:600;margin-bottom:8px}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--txt);line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent);text-decoration:none}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--grad);color:#fff;border:0;padding:14px 26px;border-radius:12px;font-size:1rem;font-weight:700;cursor:pointer;box-shadow:0 8px 24px rgba(91,140,255,.32);transition:transform .12s, box-shadow .12s}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(122,92,255,.42)}
+  .btn.ghost{background:transparent;box-shadow:none;border:1px solid var(--line);color:var(--txt)}
+  .btn:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;background:rgba(11,15,31,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.18rem;letter-spacing:-.3px}
+  .logo .mark{width:34px;height:34px;border-radius:9px;background:var(--grad);display:grid;place-items:center;box-shadow:0 4px 14px rgba(122,92,255,.45)}
+  .logo .mark svg{width:20px;height:20px}
+  .nav-cta{font-size:.92rem;padding:10px 18px}
+  @media(max-width:640px){.nav-cta{display:none}}
+
+  /* HERO */
+  .hero{position:relative;overflow:hidden;padding:70px 0 60px;text-align:center}
+  .hero::before{content:"";position:absolute;inset:0;background:
+     radial-gradient(60% 50% at 50% 0%, rgba(122,92,255,.28), transparent 70%),
+     radial-gradient(40% 40% at 80% 20%, rgba(52,211,153,.14), transparent 70%);pointer-events:none}
+  .hero .wrap{position:relative}
+  .pill-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,209,102,.12);border:1px solid rgba(255,209,102,.35);color:var(--gold);font-size:.8rem;font-weight:600;padding:6px 14px;border-radius:999px;margin-bottom:22px}
+  .hero h1{font-size:2.7rem;line-height:1.12;margin:0 0 16px;letter-spacing:-1px;font-weight:800}
+  .hero h1 .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p.sub{font-size:1.18rem;color:var(--muted);max-width:620px;margin:0 auto 30px}
+  .hero .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  @media(max-width:640px){.hero h1{font-size:2rem}.hero p.sub{font-size:1.05rem}}
+
+  /* STATS */
+  .stats{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:40px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 22px;min-width:150px}
+  .stat .n{font-size:1.6rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .stat .l{font-size:.8rem;color:var(--muted);margin-top:2px}
+
+  /* SECTION */
+  section.block{padding:56px 0}
+  .eyebrow{text-align:center;color:var(--accent);font-weight:700;font-size:.85rem;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px}
+  h2.title{text-align:center;font-size:1.9rem;margin:0 0 8px;letter-spacing:-.5px}
+  p.lead{text-align:center;color:var(--muted);max-width:640px;margin:0 auto 36px}
+
+  /* PROGRAM CARDS */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+  .pcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;transition:transform .14s,border-color .14s}
+  .pcard:hover{transform:translateY(-4px);border-color:var(--accent)}
+  .pcard .ico{width:42px;height:42px;border-radius:11px;background:var(--card2);display:grid;place-items:center;font-size:1.3rem;margin-bottom:14px}
+  .pcard h3{margin:0 0 4px;font-size:1.08rem}
+  .pcard .amt{font-size:1.5rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;margin:2px 0}
+  .pcard p{color:var(--muted);font-size:.88rem;margin:6px 0 0}
+  .pcard .tag{display:inline-block;font-size:.7rem;color:var(--good);background:rgba(52,211,153,.12);padding:2px 9px;border-radius:999px;margin-top:10px}
+
+  /* HOW */
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+  .step{position:relative;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px}
+  .step .num{width:34px;height:34px;border-radius:50%;background:var(--grad);display:grid;place-items:center;font-weight:800;margin-bottom:12px}
+  .step h4{margin:0 0 6px}
+  .step p{color:var(--muted);font-size:.9rem;margin:0}
+
+  /* QUIZ */
+  .quizwrap{background:linear-gradient(180deg,var(--bg2),var(--bg));border:1px solid var(--line);border-radius:22px;padding:30px;max-width:760px;margin:0 auto;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+  .disclaimer{background:#241a0e;border:1px solid #5a401c;color:#f3d8a8;font-size:.82rem;padding:11px 15px;border-radius:11px;margin:0 0 20px}
+  .q{margin:0 0 20px}.q:last-of-type{margin-bottom:8px}
+  label.lbl{display:block;font-weight:700;margin-bottom:9px}
   .opts{display:flex;flex-wrap:wrap;gap:8px}
-  .opts button{background:var(--card2);color:var(--txt);border:1px solid var(--line);padding:9px 14px;border-radius:9px;cursor:pointer;font-size:.9rem;transition:.15s}
+  .opts button{background:var(--card2);color:var(--txt);border:1px solid var(--line);padding:10px 15px;border-radius:10px;cursor:pointer;font-size:.9rem;transition:.14s}
   .opts button:hover{border-color:var(--accent)}
-  .opts button.sel{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
-  .cta{width:100%;background:var(--accent);color:#fff;border:0;padding:14px;border-radius:11px;font-size:1.05rem;font-weight:700;cursor:pointer;margin-top:6px}
-  .cta:disabled{opacity:.45;cursor:not-allowed}
-  .gate{display:none;border-color:var(--accent)}
+  .opts button.sel{background:var(--grad);border-color:transparent;color:#fff;font-weight:600}
+  .cta{width:100%;justify-content:center;margin-top:8px}
+
+  .gate{display:none;background:var(--card);border:1px solid var(--accent);border-radius:16px;padding:24px;margin-top:18px}
   .gate.show{display:block}
-  .gate h2{margin:0 0 6px}
-  .gate p{color:var(--muted);margin:0 0 12px;font-size:.92rem}
-  .gate input[type=email]{width:100%;padding:12px;border-radius:9px;border:1px solid var(--line);background:var(--bg);color:var(--txt);font-size:1rem}
+  .gate h3{margin:0 0 6px}.gate p{color:var(--muted);margin:0 0 12px;font-size:.92rem}
+  .teaser{background:var(--card2);border-radius:11px;padding:12px 15px;margin:12px 0;font-size:.92rem}
+  .teaser b{color:var(--good)}
+  .gate input[type=email]{width:100%;padding:13px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--txt);font-size:1rem}
   .consent{display:flex;gap:8px;align-items:flex-start;font-size:.78rem;color:var(--muted);margin:12px 0}
   .consent input{margin-top:3px}
-  .teaser{background:var(--card2);border-radius:10px;padding:12px 14px;margin:12px 0;font-size:.9rem}
-  .teaser b{color:var(--good)}
-  .res{display:none}
-  .res.show{display:block}
-  .sent{background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.4);color:var(--good);padding:10px 14px;border-radius:10px;font-size:.9rem;margin:0 0 12px}
-  .prog{border-left:5px solid var(--bad);padding:14px 16px;margin:12px 0;background:var(--card2);border-radius:0 12px 12px 0}
-  .prog.eligibil{border-color:var(--good)}
-  .prog.posibil{border-color:var(--maybe)}
-  .prog h3{margin:0 0 4px;font-size:1.12rem;display:flex;justify-content:space-between;align-items:center;gap:10px}
-  .pill{font-size:.7rem;padding:3px 9px;border-radius:999px;white-space:nowrap}
-  .pill.eligibil{background:rgba(52,211,153,.15);color:var(--good)}
-  .pill.posibil{background:rgba(251,191,36,.15);color:var(--maybe)}
-  .pill.neeligibil{background:rgba(107,114,128,.2);color:#b6bcd0}
-  .prog .money{font-size:.95rem;color:var(--txt);margin:4px 0}
-  .prog .why{font-size:.85rem;color:var(--muted);margin:6px 0 0}
-  .prog .score{font-size:.78rem;color:var(--accent);font-weight:700}
   .msg{font-size:.85rem;margin:8px 0 0;min-height:1em}
-  footer{color:var(--muted);font-size:.78rem;margin-top:24px;border-top:1px solid var(--line);padding-top:14px}
-  footer a{color:var(--accent)}
+
+  .res{display:none;margin-top:18px}.res.show{display:block}
+  .sent{background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.4);color:var(--good);padding:11px 15px;border-radius:11px;font-size:.9rem;margin:0 0 14px}
+  .prog{border-left:5px solid var(--bad);padding:15px 17px;margin:12px 0;background:var(--card2);border-radius:0 12px 12px 0}
+  .prog.eligibil{border-color:var(--good)}.prog.posibil{border-color:var(--maybe)}
+  .prog h3{margin:0 0 4px;font-size:1.1rem;display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .pillp{font-size:.7rem;padding:3px 9px;border-radius:999px;white-space:nowrap}
+  .pillp.eligibil{background:rgba(52,211,153,.15);color:var(--good)}
+  .pillp.posibil{background:rgba(251,191,36,.15);color:var(--maybe)}
+  .pillp.neeligibil{background:rgba(107,114,128,.2);color:#b6bcd0}
+  .prog .money{font-size:.95rem;margin:4px 0}.prog .why{font-size:.85rem;color:var(--muted);margin:6px 0 0}
+  .prog .score{font-size:.78rem;color:var(--accent);font-weight:700;margin-top:6px}
+
+  footer{border-top:1px solid var(--line);padding:34px 0;color:var(--muted);font-size:.82rem;text-align:center}
+  footer .logo{justify-content:center;margin-bottom:12px;font-size:1.05rem}
+  footer .src{font-size:.74rem;opacity:.8;margin-top:10px}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <span class="badge">PRE-CHECK ELIGIBILITATE · 2026</span>
-    <h1>Pentru ce fonduri te califici?</h1>
-    <p>Răspunde la 5 întrebări și află instant programele potrivite, sumele și scorul de potrivire.</p>
-  </header>
 
-  <div class="disclaimer">
-    ⚠️ Acesta este un <b>pre-check orientativ</b>, nu o garanție. Sumele și condițiile se schimbă prin
-    ghiduri oficiale — verifică ghidul activ înainte de depunere. Recomandăm <b>verificare umană</b>
-    (consultant/contabil) înainte de a depune dosarul. Nu garantăm aprobarea sau punctajul.
+<!-- NAV -->
+<nav>
+  <div class="wrap">
+    <div class="logo">
+      <span class="mark"><svg viewBox="0 0 24 24" fill="none"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" fill="#fff"/></svg></span>
+      GrantForge
+    </div>
+    <a href="#verifica" class="btn nav-cta">Verifică gratuit →</a>
   </div>
+</nav>
 
-  <!-- PASUL 1: ÎNTREBĂRI -->
-  <div class="card" id="form">
-    <div class="q">
-      <label class="lbl">1. Care e situația ta?</label>
-      <div class="opts" data-q="tip">
-        <button data-v="persoana">Persoană fizică (vreau să deschid firmă)</button>
-        <button data-v="firma_noua">Firmă nouă (sub 1 an)</button>
-        <button data-v="firma_existenta">Firmă existentă (peste 1 an)</button>
-      </div>
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <span class="pill-badge">⚡ Startup Nation 2026–2029 · înscrieri deschise</span>
+    <h1>Pentru ce fonduri <span class="g">te califici</span>?</h1>
+    <p class="sub">Consultanță și pre-check de eligibilitate <b>gratuit</b> pentru Startup Nation, Diaspora Investește Acasă, AFIR și Digitalizare IMM. Răspunzi la 5 întrebări, afli în 30 de secunde.</p>
+    <div class="cta-row">
+      <a href="#verifica" class="btn">🎯 Verifică-mi eligibilitatea</a>
+      <a href="#programe" class="btn ghost">Vezi programele</a>
     </div>
-    <div class="q">
-      <label class="lbl">2. Vârsta solicitantului / administratorului</label>
-      <div class="opts" data-q="varsta">
-        <button data-v="sub35">Sub 35 ani</button>
-        <button data-v="35_40">35–40 ani</button>
-        <button data-v="peste40">Peste 40 ani</button>
-      </div>
+    <div class="stats">
+      <div class="stat"><div class="n">4</div><div class="l">programe active</div></div>
+      <div class="stat"><div class="n">200.000 €</div><div class="l">finanțare maximă</div></div>
+      <div class="stat"><div class="n">2026–2029</div><div class="l">perioadă de depunere</div></div>
+      <div class="stat"><div class="n">Gratuit</div><div class="l">pre-check eligibilitate</div></div>
     </div>
-    <div class="q">
-      <label class="lbl">3. Domeniul afacerii</label>
-      <div class="opts" data-q="domeniu">
-        <button data-v="agricultura">Agricultură / agroturism</button>
-        <button data-v="digital">Digital / IT / software</button>
-        <button data-v="media">Evenimente / media / content</button>
-        <button data-v="turism">Turism / HoReCa</button>
-        <button data-v="productie">Producție / servicii</button>
-      </div>
-    </div>
-    <div class="q">
-      <label class="lbl">4. Regiunea de implementare</label>
-      <div class="opts" data-q="regiune">
-        <button data-v="bi">București-Ilfov</button>
-        <button data-v="alta">Altă regiune</button>
-      </div>
-    </div>
-    <div class="q">
-      <label class="lbl">5. Ai stat ≥12 luni în străinătate în ultimele 18 luni?</label>
-      <div class="opts" data-q="diaspora">
-        <button data-v="da">Da</button>
-        <button data-v="nu">Nu</button>
-      </div>
-    </div>
-    <button class="cta" id="go" disabled>Vezi rezultatele →</button>
   </div>
+</header>
 
-  <!-- PASUL 2: EMAIL GATE (rezultatele se deblochează după email) -->
-  <div class="card gate" id="gate">
-    <h2>Rezultatele tale sunt pregătite 🎯</h2>
-    <p>Introdu emailul ca să-ți trimitem rezultatul complet + checklist-ul de acte pentru fiecare program eligibil.</p>
-    <div class="teaser" id="teaser"></div>
-    <input type="email" id="email" placeholder="email@exemplu.ro" autocomplete="email">
-    <label class="consent">
-      <input type="checkbox" id="consent">
-      Sunt de acord să fiu contactat pe email cu rezultatele și informații despre programele de finanțare (GDPR).
-    </label>
-    <button class="cta" id="submitEmail">Trimite-mi rezultatele →</button>
-    <p class="msg" id="leadmsg"></p>
+<!-- PROGRAME -->
+<section class="block" id="programe">
+  <div class="wrap">
+    <div class="eyebrow">Programe de finanțare</div>
+    <h2 class="title">Bani nerambursabili pentru afacerea ta</h2>
+    <p class="lead">Verificate iunie 2026 din surse oficiale. Sumele și condițiile se pot actualiza prin ghiduri — verifică ghidul activ înainte de depunere.</p>
+    <div class="grid">
+      <div class="pcard">
+        <div class="ico">🚀</div>
+        <h3>Start-Up Nation 4</h3>
+        <div class="amt">~50.000 €</div>
+        <p>Firmă nouă + curs antreprenorial + 2 locuri de muncă. Sesiune deschisă.</p>
+        <span class="tag">★ Recomandat 2026–2029</span>
+      </div>
+      <div class="pcard">
+        <div class="ico">✈️</div>
+        <h3>Diaspora Investește Acasă</h3>
+        <div class="amt">200.000 €</div>
+        <p>Până la 60% din investiție, pentru românii cu ≥12 luni în diaspora.</p>
+        <span class="tag">Pot 100 mil €</span>
+      </div>
+      <div class="pcard">
+        <div class="ico">🌱</div>
+        <h3>AFIR — Tânăr Fermier</h3>
+        <div class="amt">70.000 €</div>
+        <p>100% nerambursabil, pentru 18–40 ani, agricultură / agroturism.</p>
+        <span class="tag">Sumă forfetară</span>
+      </div>
+      <div class="pcard">
+        <div class="ico">💻</div>
+        <h3>Digitalizare IMM</h3>
+        <div class="amt">200.000 €</div>
+        <p>~90% finanțare pentru firme cu ≥1 an. Lansări regionale 2026.</p>
+        <span class="tag">Programe regionale</span>
+      </div>
+    </div>
   </div>
+</section>
 
-  <!-- PASUL 3: REZULTATE -->
-  <div class="res" id="res">
-    <h2>Rezultatele tale</h2>
-    <p class="sent" id="sentnote"></p>
-    <div id="cards"></div>
+<!-- QUIZ -->
+<section class="block" id="verifica" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="eyebrow">Pre-check gratuit</div>
+    <h2 class="title">Află în 30 de secunde</h2>
+    <p class="lead">Răspunde la 5 întrebări și primești instant programele potrivite, sumele și scorul de potrivire.</p>
+
+    <div class="quizwrap">
+      <div class="disclaimer">
+        ⚠️ Pre-check <b>orientativ</b>, nu o garanție. Recomandăm <b>verificare umană</b> (consultant/contabil)
+        înainte de depunere. Nu garantăm aprobarea sau punctajul.
+      </div>
+
+      <div id="form">
+        <div class="q">
+          <label class="lbl">1. Care e situația ta?</label>
+          <div class="opts" data-q="tip">
+            <button data-v="persoana">Persoană fizică (vreau să deschid firmă)</button>
+            <button data-v="firma_noua">Firmă nouă (sub 1 an)</button>
+            <button data-v="firma_existenta">Firmă existentă (peste 1 an)</button>
+          </div>
+        </div>
+        <div class="q">
+          <label class="lbl">2. Vârsta solicitantului / administratorului</label>
+          <div class="opts" data-q="varsta">
+            <button data-v="sub35">Sub 35 ani</button>
+            <button data-v="35_40">35–40 ani</button>
+            <button data-v="peste40">Peste 40 ani</button>
+          </div>
+        </div>
+        <div class="q">
+          <label class="lbl">3. Domeniul afacerii</label>
+          <div class="opts" data-q="domeniu">
+            <button data-v="agricultura">Agricultură / agroturism</button>
+            <button data-v="digital">Digital / IT / software</button>
+            <button data-v="media">Evenimente / media / content</button>
+            <button data-v="turism">Turism / HoReCa</button>
+            <button data-v="productie">Producție / servicii</button>
+          </div>
+        </div>
+        <div class="q">
+          <label class="lbl">4. Regiunea de implementare</label>
+          <div class="opts" data-q="regiune">
+            <button data-v="bi">București-Ilfov</button>
+            <button data-v="alta">Altă regiune</button>
+          </div>
+        </div>
+        <div class="q">
+          <label class="lbl">5. Ai stat ≥12 luni în străinătate în ultimele 18 luni?</label>
+          <div class="opts" data-q="diaspora">
+            <button data-v="da">Da</button>
+            <button data-v="nu">Nu</button>
+          </div>
+        </div>
+        <button class="btn cta" id="go" disabled>Vezi rezultatele →</button>
+      </div>
+
+      <!-- EMAIL GATE -->
+      <div class="gate" id="gate">
+        <h3>Rezultatele tale sunt pregătite 🎯</h3>
+        <p>Introdu emailul ca să-ți trimitem rezultatul complet + checklist-ul de acte pentru fiecare program eligibil.</p>
+        <div class="teaser" id="teaser"></div>
+        <input type="email" id="email" placeholder="email@exemplu.ro" autocomplete="email">
+        <label class="consent">
+          <input type="checkbox" id="consent">
+          Sunt de acord să fiu contactat pe email cu rezultatele și informații despre programele de finanțare (GDPR).
+        </label>
+        <button class="btn cta" id="submitEmail">Trimite-mi rezultatele →</button>
+        <p class="msg" id="leadmsg"></p>
+      </div>
+
+      <!-- RESULTS -->
+      <div class="res" id="res">
+        <h3>Rezultatele tale</h3>
+        <p class="sent" id="sentnote"></p>
+        <div id="cards"></div>
+      </div>
+    </div>
   </div>
+</section>
 
-  <footer>
-    Surse: mfinante.gov.ro · imm.gov.ro · afir.ro · mfe.gov.ro · fonduri-structurale.ro · startupcafe.ro.
-    Date verificate iunie 2026. GrantForge oferă <b>asistență la pregătirea dosarului</b> — nu garantează aprobarea.
-  </footer>
-</div>
+<!-- HOW -->
+<section class="block">
+  <div class="wrap">
+    <div class="eyebrow">Cum funcționează</div>
+    <h2 class="title">De la verificare la dosar, în 3 pași</h2>
+    <p class="lead">Te ajutăm cu pregătirea dosarului. Verificarea finală de către un consultant uman este recomandată înainte de depunere.</p>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><h4>Verifici gratuit</h4><p>Răspunzi la 5 întrebări și afli pentru ce programe te califici și ce sume poți obține.</p></div>
+      <div class="step"><div class="num">2</div><h4>Primești planul</h4><p>Îți trimitem checklist-ul de acte și pașii pentru programul cu cea mai bună potrivire.</p></div>
+      <div class="step"><div class="num">3</div><h4>Pregătești dosarul</h4><p>Business plan, cashflow, justificări — cu verificare umană recomandată înainte de depunere.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="logo">
+      <span class="mark"><svg viewBox="0 0 24 24" fill="none"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" fill="#fff"/></svg></span>
+      GrantForge
+    </div>
+    <p>Consultanță și eligibilitate pentru fonduri România · Startup Nation 2026–2029.<br>
+    Oferim <b>asistență la pregătirea dosarului</b> — nu garantăm aprobarea. Verificare umană recomandată.</p>
+    <p class="src">Surse: mfinante.gov.ro · imm.gov.ro · afir.ro · mfe.gov.ro · fonduri-structurale.ro · startupcafe.ro · date verificate iunie 2026.</p>
+  </div>
+</footer>
 
 <script>
-/* ===========================================================================
-   MAILERLITE — lead-urile ajung în grupul "GrantForge Leads" (cont woopsahile@gmail.com).
-   La înscriere, automatizarea "GrantForge — Trimite rezultatele" trimite emailul cu rezultatul.
-   Câmpul top_program = programul cu cea mai bună potrivire (folosit în email: {$top_program}).
-=========================================================================== */
+/* MAILERLITE — lead-urile ajung în grupul "GrantForge Leads" (cont 2407966).
+   Automatizarea "GrantForge — Trimite rezultatele" trimite emailul cu {$top_program}. */
 const ML = {
   account: "2407966",
   formId:  "189896573476406985",
@@ -170,24 +319,21 @@ document.querySelectorAll('.opts').forEach(grp=>{
 function evaluate(){
   const s = state, out = [];
 
-  (()=>{ // Diaspora Investește Acasă
+  (()=>{ // Diaspora
     const newco = s.tip==='persoana' || s.tip==='firma_noua';
     let status, why, score;
-    if(newco && s.diaspora==='da'){
-      status='eligibil'; score=9;
+    if(newco && s.diaspora==='da'){ status='eligibil'; score=9;
       const cofin = s.varsta==='sub35' ? '5%' : '10%';
       why = `Bifezi: firmă nouă + ≥12 luni diaspora. Cofinanțare ${cofin}.` + (s.tip==='persoana'?' Trebuie să înființezi un SRL.':'');
-    } else if(newco && s.diaspora==='nu'){
-      status='neeligibil'; score=2; why='Necesită ≥12 luni rezidență în străinătate în ultimele 18 luni — nu bifezi.';
+    } else if(newco && s.diaspora==='nu'){ status='neeligibil'; score=2; why='Necesită ≥12 luni rezidență în străinătate în ultimele 18 luni — nu bifezi.';
     } else { status='neeligibil'; score=1; why='Necesită firmă NOUĂ înființată de un asociat din diaspora.'; }
     out.push({n:'Diaspora Investește Acasă', m:'până la 200.000 € (60% din investiție)', status, why, score});
   })();
 
-  (()=>{ // Start-Up Nation 4
+  (()=>{ // Start-Up Nation
     const newco = s.tip==='persoana' || s.tip==='firma_noua';
     let status, why, score;
-    if(newco){
-      status='eligibil'; score=8;
+    if(newco){ status='eligibil'; score=8;
       const cofin = s.regiune==='bi' ? '~20%' : '10–20%';
       why=`Firmă nouă eligibilă. Necesită curs antreprenorial + min 2 locuri de muncă (24 luni). Cofinanțare ${cofin}.`;
     } else { status='neeligibil'; score=2; why='Destinat firmelor NOI (start-up). Firma ta există deja de peste 1 an.'; }
@@ -203,10 +349,9 @@ function evaluate(){
     out.push({n:'AFIR DR-30 — Tânăr Fermier', m:'70.000 € (100% nerambursabil)', status, why, score});
   })();
 
-  (()=>{ // Digitalizare IMM (POR)
+  (()=>{ // Digitalizare IMM
     let status, why, score;
-    if(s.tip==='firma_existenta'){
-      status='eligibil'; score=7;
+    if(s.tip==='firma_existenta'){ status='eligibil'; score=7;
       const range = s.regiune==='bi' ? '25.000–200.000 €' : '15.000–200.000 €';
       why=`Firmă cu ≥1 an vechime, eligibilă pentru digitalizare. Lansări vara 2026. Sumă ${range}, ~90% finanțare.`;
     } else { status='posibil'; score=3; why='Necesită firmă cu ≥1 an vechime. Devii eligibil după ce firma împlinește 1 an.'; }
@@ -216,22 +361,19 @@ function evaluate(){
   return out.sort((a,b)=>b.score-a.score);
 }
 
-// PASUL 1 → 2: calculează (în spate) și deschide email gate-ul, fără să arate rezultatele
 document.getElementById('go').onclick = ()=>{
   lastResults = evaluate();
   const elig = lastResults.filter(r=>r.status==='eligibil').length;
   const poz  = lastResults.filter(r=>r.status!=='neeligibil').length;
   document.getElementById('teaser').innerHTML =
     `Pe baza răspunsurilor, te potrivești pentru <b>${poz} ${poz===1?'program':'programe'}</b>` +
-    (elig?` (din care <b>${elig} eligibil${elig===1?'':'e'} direct</b>)`:'') +
-    `. Deblochează detaliile și sumele 👇`;
+    (elig?` (din care <b>${elig} eligibil${elig===1?'':'e'} direct</b>)`:'') + `. Deblochează detaliile și sumele 👇`;
   document.getElementById('form').style.opacity = .5;
   document.getElementById('go').disabled = true;
   document.getElementById('gate').classList.add('show');
-  document.getElementById('gate').scrollIntoView({behavior:'smooth'});
+  document.getElementById('gate').scrollIntoView({behavior:'smooth', block:'center'});
 };
 
-// PASUL 2 → 3: salvează lead-ul (DB), apoi deblochează rezultatele
 document.getElementById('submitEmail').onclick = async ()=>{
   const email = document.getElementById('email').value.trim();
   const consent = document.getElementById('consent').checked;
@@ -240,12 +382,8 @@ document.getElementById('submitEmail').onclick = async ()=>{
   if(!consent){ msg.style.color='#f87171'; msg.textContent='Bifează acordul ca să continui.'; return; }
 
   const topProgram = (lastResults.find(r=>r.status==='eligibil') || lastResults[0]).n;
-  const lead = {
-    email, top_program: topProgram,
-    raspunsuri: {...state},
-    rezultate: lastResults.map(r=>({program:r.n, status:r.status, suma:r.m, scor:r.score})),
-    ts: new Date().toISOString()
-  };
+  const lead = { email, top_program: topProgram, raspunsuri:{...state},
+    rezultate:lastResults.map(r=>({program:r.n,status:r.status,suma:r.m,scor:r.score})), ts:new Date().toISOString() };
 
   msg.style.color='var(--muted)'; msg.textContent='Se trimite...';
   let saved = false;
@@ -253,23 +391,20 @@ document.getElementById('submitEmail').onclick = async ()=>{
     const fd = new FormData();
     fd.append('fields[email]', email);
     fd.append('fields[top_program]', topProgram);
-    fd.append('ml-submit', '1');
-    fd.append('anticsrf', 'true');
+    fd.append('ml-submit','1'); fd.append('anticsrf','true');
     await fetch(ML.endpoint, {method:'POST', body:fd, mode:'no-cors'});
-    saved = true; // răspuns opac (no-cors) — verifică în grupul MailerLite că a ajuns
+    saved = true;
   }catch(e){ saved = false; }
-  // fallback local — nimic nu se pierde nici dacă rețeaua pică
   const leads = JSON.parse(localStorage.getItem('gf_leads')||'[]');
   leads.push(lead); localStorage.setItem('gf_leads', JSON.stringify(leads));
 
-  // deblochează rezultatele
   const c = document.getElementById('cards'); c.innerHTML='';
   const labels = {eligibil:'ELIGIBIL', posibil:'POSIBIL', neeligibil:'NEELIGIBIL'};
   lastResults.forEach(r=>{
     const div = document.createElement('div'); div.className='prog '+r.status;
-    div.innerHTML = `<h3>${r.n} <span class="pill ${r.status}">${labels[r.status]}</span></h3>
+    div.innerHTML = `<h3>${r.n} <span class="pillp ${r.status}">${labels[r.status]}</span></h3>
       <div class="money">💶 ${r.m}</div><div class="why">${r.why}</div>
-      <div class="score" style="margin-top:6px">Scor potrivire: ${r.score}/10</div>`;
+      <div class="score">Scor potrivire: ${r.score}/10</div>`;
     c.appendChild(div);
   });
   document.getElementById('sentnote').textContent = saved
@@ -277,7 +412,7 @@ document.getElementById('submitEmail').onclick = async ()=>{
     : `✓ Rezultatele tale, mai jos. (Email salvat: ${email}.)`;
   document.getElementById('gate').classList.remove('show');
   document.getElementById('res').classList.add('show');
-  document.getElementById('res').scrollIntoView({behavior:'smooth'});
+  document.getElementById('res').scrollIntoView({behavior:'smooth', block:'start'});
 };
 </script>
 </body>
