@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GrantForge — Pre-check Eligibilitate Fonduri România 2026</title>
+<style>
+  :root{
+    --bg:#0f1220; --card:#1a1f35; --card2:#222845; --txt:#e8ebf5; --muted:#9aa3c0;
+    --accent:#5b8cff; --good:#34d399; --maybe:#fbbf24; --bad:#6b7280; --line:#2c3354;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--txt);line-height:1.5}
+  .wrap{max-width:880px;margin:0 auto;padding:24px 18px 60px}
+  header h1{font-size:1.7rem;margin:0 0 4px}
+  header p{color:var(--muted);margin:0}
+  .badge{display:inline-block;background:var(--card2);color:var(--accent);font-size:.72rem;padding:3px 8px;border-radius:999px;margin-bottom:10px;letter-spacing:.5px}
+  .disclaimer{background:#2a1f12;border:1px solid #5a401c;color:#f3d8a8;font-size:.82rem;padding:10px 14px;border-radius:10px;margin:16px 0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin:16px 0}
+  .q{margin:0 0 18px}
+  .q:last-child{margin-bottom:0}
+  label.lbl{display:block;font-weight:600;margin-bottom:8px}
+  .opts{display:flex;flex-wrap:wrap;gap:8px}
+  .opts button{background:var(--card2);color:var(--txt);border:1px solid var(--line);padding:9px 14px;border-radius:9px;cursor:pointer;font-size:.9rem;transition:.15s}
+  .opts button:hover{border-color:var(--accent)}
+  .opts button.sel{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+  .cta{width:100%;background:var(--accent);color:#fff;border:0;padding:14px;border-radius:11px;font-size:1.05rem;font-weight:700;cursor:pointer;margin-top:6px}
+  .cta:disabled{opacity:.45;cursor:not-allowed}
+  .gate{display:none;border-color:var(--accent)}
+  .gate.show{display:block}
+  .gate h2{margin:0 0 6px}
+  .gate p{color:var(--muted);margin:0 0 12px;font-size:.92rem}
+  .gate input[type=email]{width:100%;padding:12px;border-radius:9px;border:1px solid var(--line);background:var(--bg);color:var(--txt);font-size:1rem}
+  .consent{display:flex;gap:8px;align-items:flex-start;font-size:.78rem;color:var(--muted);margin:12px 0}
+  .consent input{margin-top:3px}
+  .teaser{background:var(--card2);border-radius:10px;padding:12px 14px;margin:12px 0;font-size:.9rem}
+  .teaser b{color:var(--good)}
+  .res{display:none}
+  .res.show{display:block}
+  .sent{background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.4);color:var(--good);padding:10px 14px;border-radius:10px;font-size:.9rem;margin:0 0 12px}
+  .prog{border-left:5px solid var(--bad);padding:14px 16px;margin:12px 0;background:var(--card2);border-radius:0 12px 12px 0}
+  .prog.eligibil{border-color:var(--good)}
+  .prog.posibil{border-color:var(--maybe)}
+  .prog h3{margin:0 0 4px;font-size:1.12rem;display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .pill{font-size:.7rem;padding:3px 9px;border-radius:999px;white-space:nowrap}
+  .pill.eligibil{background:rgba(52,211,153,.15);color:var(--good)}
+  .pill.posibil{background:rgba(251,191,36,.15);color:var(--maybe)}
+  .pill.neeligibil{background:rgba(107,114,128,.2);color:#b6bcd0}
+  .prog .money{font-size:.95rem;color:var(--txt);margin:4px 0}
+  .prog .why{font-size:.85rem;color:var(--muted);margin:6px 0 0}
+  .prog .score{font-size:.78rem;color:var(--accent);font-weight:700}
+  .msg{font-size:.85rem;margin:8px 0 0;min-height:1em}
+  footer{color:var(--muted);font-size:.78rem;margin-top:24px;border-top:1px solid var(--line);padding-top:14px}
+  footer a{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="badge">PRE-CHECK ELIGIBILITATE · 2026</span>
+    <h1>Pentru ce fonduri te califici?</h1>
+    <p>Răspunde la 5 întrebări și află instant programele potrivite, sumele și scorul de potrivire.</p>
+  </header>
+
+  <div class="disclaimer">
+    ⚠️ Acesta este un <b>pre-check orientativ</b>, nu o garanție. Sumele și condițiile se schimbă prin
+    ghiduri oficiale — verifică ghidul activ înainte de depunere. Recomandăm <b>verificare umană</b>
+    (consultant/contabil) înainte de a depune dosarul. Nu garantăm aprobarea sau punctajul.
+  </div>
+
+  <!-- PASUL 1: ÎNTREBĂRI -->
+  <div class="card" id="form">
+    <div class="q">
+      <label class="lbl">1. Care e situația ta?</label>
+      <div class="opts" data-q="tip">
+        <button data-v="persoana">Persoană fizică (vreau să deschid firmă)</button>
+        <button data-v="firma_noua">Firmă nouă (sub 1 an)</button>
+        <button data-v="firma_existenta">Firmă existentă (peste 1 an)</button>
+      </div>
+    </div>
+    <div class="q">
+      <label class="lbl">2. Vârsta solicitantului / administratorului</label>
+      <div class="opts" data-q="varsta">
+        <button data-v="sub35">Sub 35 ani</button>
+        <button data-v="35_40">35–40 ani</button>
+        <button data-v="peste40">Peste 40 ani</button>
+      </div>
+    </div>
+    <div class="q">
+      <label class="lbl">3. Domeniul afacerii</label>
+      <div class="opts" data-q="domeniu">
+        <button data-v="agricultura">Agricultură / agroturism</button>
+        <button data-v="digital">Digital / IT / software</button>
+        <button data-v="media">Evenimente / media / content</button>
+        <button data-v="turism">Turism / HoReCa</button>
+        <button data-v="productie">Producție / servicii</button>
+      </div>
+    </div>
+    <div class="q">
+      <label class="lbl">4. Regiunea de implementare</label>
+      <div class="opts" data-q="regiune">
+        <button data-v="bi">București-Ilfov</button>
+        <button data-v="alta">Altă regiune</button>
+      </div>
+    </div>
+    <div class="q">
+      <label class="lbl">5. Ai stat ≥12 luni în străinătate în ultimele 18 luni?</label>
+      <div class="opts" data-q="diaspora">
+        <button data-v="da">Da</button>
+        <button data-v="nu">Nu</button>
+      </div>
+    </div>
+    <button class="cta" id="go" disabled>Vezi rezultatele →</button>
+  </div>
+
+  <!-- PASUL 2: EMAIL GATE (rezultatele se deblochează după email) -->
+  <div class="card gate" id="gate">
+    <h2>Rezultatele tale sunt pregătite 🎯</h2>
+    <p>Introdu emailul ca să-ți trimitem rezultatul complet + checklist-ul de acte pentru fiecare program eligibil.</p>
+    <div class="teaser" id="teaser"></div>
+    <input type="email" id="email" placeholder="email@exemplu.ro" autocomplete="email">
+    <label class="consent">
+      <input type="checkbox" id="consent">
+      Sunt de acord să fiu contactat pe email cu rezultatele și informații despre programele de finanțare (GDPR).
+    </label>
+    <button class="cta" id="submitEmail">Trimite-mi rezultatele →</button>
+    <p class="msg" id="leadmsg"></p>
+  </div>
+
+  <!-- PASUL 3: REZULTATE -->
+  <div class="res" id="res">
+    <h2>Rezultatele tale</h2>
+    <p class="sent" id="sentnote"></p>
+    <div id="cards"></div>
+  </div>
+
+  <footer>
+    Surse: mfinante.gov.ro · imm.gov.ro · afir.ro · mfe.gov.ro · fonduri-structurale.ro · startupcafe.ro.
+    Date verificate iunie 2026. GrantForge oferă <b>asistență la pregătirea dosarului</b> — nu garantează aprobarea.
+  </footer>
+</div>
+
+<script>
+/* ===========================================================================
+   MAILERLITE — lead-urile ajung în grupul "GrantForge Leads" (cont woopsahile@gmail.com).
+   La înscriere, automatizarea "GrantForge — Trimite rezultatele" trimite emailul cu rezultatul.
+   Câmpul top_program = programul cu cea mai bună potrivire (folosit în email: {$top_program}).
+=========================================================================== */
+const ML = {
+  account: "2407966",
+  formId:  "189896573476406985",
+  endpoint:"https://assets.mailerlite.com/jsonp/2407966/forms/189896573476406985/subscribe"
+};
+
+const state = {tip:null, varsta:null, domeniu:null, regiune:null, diaspora:null};
+let lastResults = [];
+
+document.querySelectorAll('.opts').forEach(grp=>{
+  const q = grp.dataset.q;
+  grp.querySelectorAll('button').forEach(btn=>{
+    btn.onclick = ()=>{
+      grp.querySelectorAll('button').forEach(b=>b.classList.remove('sel'));
+      btn.classList.add('sel');
+      state[q] = btn.dataset.v;
+      document.getElementById('go').disabled = Object.values(state).some(v=>v===null);
+    };
+  });
+});
+
+function evaluate(){
+  const s = state, out = [];
+
+  (()=>{ // Diaspora Investește Acasă
+    const newco = s.tip==='persoana' || s.tip==='firma_noua';
+    let status, why, score;
+    if(newco && s.diaspora==='da'){
+      status='eligibil'; score=9;
+      const cofin = s.varsta==='sub35' ? '5%' : '10%';
+      why = `Bifezi: firmă nouă + ≥12 luni diaspora. Cofinanțare ${cofin}.` + (s.tip==='persoana'?' Trebuie să înființezi un SRL.':'');
+    } else if(newco && s.diaspora==='nu'){
+      status='neeligibil'; score=2; why='Necesită ≥12 luni rezidență în străinătate în ultimele 18 luni — nu bifezi.';
+    } else { status='neeligibil'; score=1; why='Necesită firmă NOUĂ înființată de un asociat din diaspora.'; }
+    out.push({n:'Diaspora Investește Acasă', m:'până la 200.000 € (60% din investiție)', status, why, score});
+  })();
+
+  (()=>{ // Start-Up Nation 4
+    const newco = s.tip==='persoana' || s.tip==='firma_noua';
+    let status, why, score;
+    if(newco){
+      status='eligibil'; score=8;
+      const cofin = s.regiune==='bi' ? '~20%' : '10–20%';
+      why=`Firmă nouă eligibilă. Necesită curs antreprenorial + min 2 locuri de muncă (24 luni). Cofinanțare ${cofin}.`;
+    } else { status='neeligibil'; score=2; why='Destinat firmelor NOI (start-up). Firma ta există deja de peste 1 an.'; }
+    out.push({n:'Start-Up Nation 4', m:'~50.000 € (250.000 lei)', status, why, score});
+  })();
+
+  (()=>{ // AFIR DR-30
+    const agro = s.domeniu==='agricultura', age = s.varsta==='sub35'||s.varsta==='35_40', newish = s.tip!=='firma_existenta';
+    let status, why, score;
+    if(agro && age && newish){ status='eligibil'; score=8; why='Domeniu agricol + vârstă 18–40 + primă instalare. Grant 100% nerambursabil.'; }
+    else if(agro && age){ status='posibil'; score=5; why='Domeniu + vârstă ok, dar necesită PRIMĂ instalare ca șef de fermă. Verifică statutul.'; }
+    else { status='neeligibil'; score=1; why = !agro ? 'Doar pentru activități agricole/agroturism.' : 'Necesită vârsta 18–40 ani.'; }
+    out.push({n:'AFIR DR-30 — Tânăr Fermier', m:'70.000 € (100% nerambursabil)', status, why, score});
+  })();
+
+  (()=>{ // Digitalizare IMM (POR)
+    let status, why, score;
+    if(s.tip==='firma_existenta'){
+      status='eligibil'; score=7;
+      const range = s.regiune==='bi' ? '25.000–200.000 €' : '15.000–200.000 €';
+      why=`Firmă cu ≥1 an vechime, eligibilă pentru digitalizare. Lansări vara 2026. Sumă ${range}, ~90% finanțare.`;
+    } else { status='posibil'; score=3; why='Necesită firmă cu ≥1 an vechime. Devii eligibil după ce firma împlinește 1 an.'; }
+    out.push({n:'Digitalizare IMM (Program Regional)', m:'15.000–200.000 € (~90%)', status, why, score});
+  })();
+
+  return out.sort((a,b)=>b.score-a.score);
+}
+
+// PASUL 1 → 2: calculează (în spate) și deschide email gate-ul, fără să arate rezultatele
+document.getElementById('go').onclick = ()=>{
+  lastResults = evaluate();
+  const elig = lastResults.filter(r=>r.status==='eligibil').length;
+  const poz  = lastResults.filter(r=>r.status!=='neeligibil').length;
+  document.getElementById('teaser').innerHTML =
+    `Pe baza răspunsurilor, te potrivești pentru <b>${poz} ${poz===1?'program':'programe'}</b>` +
+    (elig?` (din care <b>${elig} eligibil${elig===1?'':'e'} direct</b>)`:'') +
+    `. Deblochează detaliile și sumele 👇`;
+  document.getElementById('form').style.opacity = .5;
+  document.getElementById('go').disabled = true;
+  document.getElementById('gate').classList.add('show');
+  document.getElementById('gate').scrollIntoView({behavior:'smooth'});
+};
+
+// PASUL 2 → 3: salvează lead-ul (DB), apoi deblochează rezultatele
+document.getElementById('submitEmail').onclick = async ()=>{
+  const email = document.getElementById('email').value.trim();
+  const consent = document.getElementById('consent').checked;
+  const msg = document.getElementById('leadmsg');
+  if(!/^[^@]+@[^@]+\.[^@]+$/.test(email)){ msg.style.color='#f87171'; msg.textContent='Introdu un email valid.'; return; }
+  if(!consent){ msg.style.color='#f87171'; msg.textContent='Bifează acordul ca să continui.'; return; }
+
+  const topProgram = (lastResults.find(r=>r.status==='eligibil') || lastResults[0]).n;
+  const lead = {
+    email, top_program: topProgram,
+    raspunsuri: {...state},
+    rezultate: lastResults.map(r=>({program:r.n, status:r.status, suma:r.m, scor:r.score})),
+    ts: new Date().toISOString()
+  };
+
+  msg.style.color='var(--muted)'; msg.textContent='Se trimite...';
+  let saved = false;
+  try{
+    const fd = new FormData();
+    fd.append('fields[email]', email);
+    fd.append('fields[top_program]', topProgram);
+    fd.append('ml-submit', '1');
+    fd.append('anticsrf', 'true');
+    await fetch(ML.endpoint, {method:'POST', body:fd, mode:'no-cors'});
+    saved = true; // răspuns opac (no-cors) — verifică în grupul MailerLite că a ajuns
+  }catch(e){ saved = false; }
+  // fallback local — nimic nu se pierde nici dacă rețeaua pică
+  const leads = JSON.parse(localStorage.getItem('gf_leads')||'[]');
+  leads.push(lead); localStorage.setItem('gf_leads', JSON.stringify(leads));
+
+  // deblochează rezultatele
+  const c = document.getElementById('cards'); c.innerHTML='';
+  const labels = {eligibil:'ELIGIBIL', posibil:'POSIBIL', neeligibil:'NEELIGIBIL'};
+  lastResults.forEach(r=>{
+    const div = document.createElement('div'); div.className='prog '+r.status;
+    div.innerHTML = `<h3>${r.n} <span class="pill ${r.status}">${labels[r.status]}</span></h3>
+      <div class="money">💶 ${r.m}</div><div class="why">${r.why}</div>
+      <div class="score" style="margin-top:6px">Scor potrivire: ${r.score}/10</div>`;
+    c.appendChild(div);
+  });
+  document.getElementById('sentnote').textContent = saved
+    ? `✓ Te-am înregistrat (${email}). Îți trimitem raportul complet + checklist-ul pe email.`
+    : `✓ Rezultatele tale, mai jos. (Email salvat: ${email}.)`;
+  document.getElementById('gate').classList.remove('show');
+  document.getElementById('res').classList.add('show');
+  document.getElementById('res').scrollIntoView({behavior:'smooth'});
+};
+</script>
+</body>
+</html>
